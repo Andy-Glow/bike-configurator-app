@@ -1,0 +1,235 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+
+/* Затемнение фона под выезжающей корзиной */
+.backdrop {
+  position: fixed;
+  inset: 0; /* Растягиваем на весь экран (top:0, right:0, bottom:0, left:0) */
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+}
+
+/* Сама выезжающая панель корзины */
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 400px; /* Ограничиваем ширину на десктопе */
+  height: 100vh;
+  background: $color-bg;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 101;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+}
+
+/* Верхняя часть корзины (заголовок и кнопки управления) */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+
+  h2 {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+}
+
+/* Контейнер для кнопок "Очистить" и "Закрыть" */
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Кнопка "Очистить корзину" */
+.clearBtn {
+  background: transparent;
+  border: none;
+  color: #888;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #ff4444; /* При наведении становится красной */
+  }
+}
+
+/* Кнопка закрытия корзины (крестик) */
+.closeBtn {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    color: #aaa;
+  }
+}
+
+/* Прокручиваемый список товаров */
+.itemsList {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  /* Тонкий и аккуратный скроллбар */
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+  }
+}
+
+/* Текст, если корзина пуста */
+.empty {
+  color: #888;
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* Карточка одного товара в корзине */
+.cartItem {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  @include glass-effect;
+  border-radius: $radius-md;
+
+  h4 {
+    margin: 0 0 8px 0;
+    font-size: 1.1rem;
+    color: #fff;
+  }
+}
+
+/* Левая часть карточки (информация о товаре) */
+.itemInfo {
+  flex: 1;
+}
+
+/* Кружочек, показывающий выбранный цвет велосипеда */
+.colorIndicator {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 8px;
+}
+
+/* Текст с количеством аксессуаров */
+.accs {
+  color: #888;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+/* Правая часть карточки (цена и кнопка удаления) */
+.itemActions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+/* Цена товара */
+.price {
+  font-weight: 700;
+  color: $color-accent;
+}
+
+/* Кнопка удаления товара (иконка мусорки) */
+.removeBtn {
+  background: rgba(255, 68, 68, 0.1);
+  border: none;
+  color: #ff4444;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background: rgba(255, 68, 68, 0.2); /* Усиливаем красный фон */
+    transform: scale(1.05);
+  }
+}
+
+/* Подвал с итоговой суммой и кнопками */
+.footer {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Строка с итоговой суммой */
+.total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+/* Кнопка "Оформить заказ" */
+.checkoutBtn {
+  width: 100%;
+  padding: 16px;
+  background: $color-accent;
+  color: white;
+  border: none;
+  border-radius: $radius-md;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background: lighten($color-accent, 5%);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Обертка для кнопки "Очистить" (выравниваем по правому краю) */
+.clearWrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px; /* Отступ снизу, чтобы не липло к сумме */
+}
+
+/* Кнопка "Очистить корзину" */
+.clearBtn {
+  background: transparent;
+  border: none;
+  color: #888;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: color 0.2s;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+
+  &:hover {
+    color: #ff4444; /* Красный при наведении */
+  }
+}

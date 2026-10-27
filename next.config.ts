@@ -1,9 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  cacheComponents: true,
-  partialPrefetching: true,
+  transpilePackages: ["three"],
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com", // Разрешаем картинки с Unsplash
+      },
+    ],
+  },
 };
 
 export default nextConfig;
