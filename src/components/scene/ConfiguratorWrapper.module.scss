@@ -1,0 +1,28 @@
+.canvasContainer {
+  width: 100%;
+  height: 100%;
+}
+
+.loading {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+}
+
+/* --- АДАПТИВ ДЛЯ ПК --- */
+@media (min-width: 769px) {
+  .canvasContainer {
+    width: calc(100% - 360px);
+  }
+}
+
+/* --- АДАПТИВ ДЛЯ МОБИЛЬНЫХ --- */
+@media (max-width: 768px) {
+  .canvasContainer {
+    height: 45vh; /* 3D-сцена занимает 45% высоты экрана */
+    flex-shrink: 0;
+  }
+}

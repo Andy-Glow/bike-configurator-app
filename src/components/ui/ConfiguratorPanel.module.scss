@@ -144,3 +144,19 @@
     transform: translateY(0) scale(0.98);
   }
 }
+
+/* --- АДАПТИВ ДЛЯ МОБИЛЬНЫХ --- */
+@media (max-width: 768px) {
+  .panel {
+    position: static; /* Убираем абсолютное позиционирование */
+    width: 100%;
+    border-radius: 0;
+    padding: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(15, 15, 20, 0.95); /* Более плотный фон для читаемости */
+
+    /* Ограничиваем высоту панели, чтобы она не занимала весь экран */
+    max-height: 50vh;
+    overflow-y: auto;
+  }
+}

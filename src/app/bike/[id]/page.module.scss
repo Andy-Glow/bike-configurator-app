@@ -1,0 +1,59 @@
+.main {
+  height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.description {
+  color: #aaa;
+}
+
+/* Контейнер, где лежит и 3D, и панель */
+.configuratorContainer {
+  flex: 1;
+  position: relative;
+  background: #0f0f13;
+  border-radius: 20px;
+  margin: 0 40px 40px;
+  overflow: hidden;
+}
+
+/* --- АДАПТИВ ДЛЯ МОБИЛЬНЫХ --- */
+@media (max-width: 768px) {
+  .main {
+    height: auto; /* Убираем жесткую высоту */
+    min-height: calc(100vh - 60px);
+  }
+
+  .header {
+    padding: 15px 20px;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
+
+  .configuratorContainer {
+    margin: 0;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column; /* 3D-модель и панель друг под другом */
+    overflow: visible;
+  }
+}

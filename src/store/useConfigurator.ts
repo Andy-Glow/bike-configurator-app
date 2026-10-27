@@ -5,16 +5,14 @@ import { create } from "zustand";
 import { Bike } from "@/types";
 
 interface ConfiguratorState {
-  // Данные текущего выбранного велосипеда
   activeBike: Bike | null;
   selectedColor: string;
-  selectedAccessories: string[]; // Массив ID выбранных аксессуаров
+  selectedAccessories: string[];
 
-  // Действия
   initBike: (bike: Bike) => void;
   setColor: (colorHex: string) => void;
   toggleAccessory: (accessoryId: string) => void;
-  resetConfigurator: () => void; // <-- Новый метод для сброса
+  resetConfigurator: () => void; // Метод для сброса
 }
 
 export const useConfigurator = create<ConfiguratorState>((set) => ({
@@ -22,7 +20,7 @@ export const useConfigurator = create<ConfiguratorState>((set) => ({
   selectedColor: "",
   selectedAccessories: [],
 
-  // Вызывается при открытии страницы велосипеда
+  // Инициализация при переходе на страницу
   initBike: (bike) =>
     set({
       activeBike: bike,
@@ -30,7 +28,6 @@ export const useConfigurator = create<ConfiguratorState>((set) => ({
       selectedAccessories: [],
     }),
 
-  // Установка цвета
   setColor: (hex) => set({ selectedColor: hex }),
 
   // Включение/выключение аксессуара
@@ -41,7 +38,7 @@ export const useConfigurator = create<ConfiguratorState>((set) => ({
         : [...state.selectedAccessories, id],
     })),
 
-  // Сбрасываем конфигурацию в ноль (после добавления в корзину)
+  // Сброс после добавления в корзину
   resetConfigurator: () =>
     set({
       activeBike: null,

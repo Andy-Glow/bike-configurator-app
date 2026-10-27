@@ -12,13 +12,10 @@ interface BikeCardProps {
 }
 
 export function BikeCard({ bike }: BikeCardProps) {
-  // Достаем список избранного и метод переключения
   const { favorites, toggleFavorite } = useFavorites();
-
-  // Проверяем, находится ли этот велосипед в избранном
   const isFav = favorites.includes(bike.id);
 
-  // Обработчик клика по сердечку (чтобы не переходить на страницу)
+  // Останавливаем клик, чтобы не переходить на страницу велосипеда
   const handleFavoriteClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -27,25 +24,17 @@ export function BikeCard({ bike }: BikeCardProps) {
 
   return (
     <Link href={`/bike/${bike.id}`} className={styles.card}>
-      {/* Кнопка "В избранное" (в правом верхнем углу) */}
+      {/* Кнопка избранного поверх картинки */}
       <button
         className={`${styles.favoriteBtn} ${isFav ? styles.isFavorite : ""}`}
-        onClick={handleFavoriteClick}
-        title={isFav ? "Удалить из избранного" : "Добавить в избранное"}>
+        onClick={handleFavoriteClick}>
         <HeartIcon />
       </button>
 
       <div className={styles.imageWrapper}>
-        <Image
-          src={bike.imageUrl}
-          alt={bike.name}
-          fill
-          sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-          className={styles.image}
-        />
+        <Image src={bike.imageUrl} alt={bike.name} fill sizes='33vw' className={styles.image} />
       </div>
 
-      {/* Блок с названием и ценой */}
       <div className={styles.content}>
         <h3 className={styles.title}>{bike.name}</h3>
         <p className={styles.price}>{bike.basePrice.toLocaleString("ru-RU")} ₽</p>

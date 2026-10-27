@@ -1,0 +1,50 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+
+.zoomWrapper {
+  position: absolute;
+  z-index: 10;
+  @include glass-effect;
+  padding: 8px;
+  border-radius: $radius-md;
+  display: flex;
+  gap: 10px;
+
+  /* Позиционирование для ПК: слева по центру */
+  left: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  flex-direction: column;
+}
+
+.zoomBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
+}
+
+/* --- АДАПТИВ ДЛЯ МОБИЛЬНЫХ --- */
+@media (max-width: 768px) {
+  .zoomWrapper {
+    /* На мобильных: между 3D-сценой (45vh) и панелью */
+    top: calc(45vh - 60px);
+    bottom: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    flex-direction: row;
+    background: rgba(15, 15, 20, 0.8); /* Чуть плотнее фон */
+  }
+}

@@ -4,16 +4,18 @@
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 10px 20px;
+  padding: 10px 16px;
   border-radius: 30px;
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.15);
   color: #aaa;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
+  white-space: nowrap;
 
   &:hover {
     border-color: rgba(255, 255, 255, 0.4);
@@ -21,7 +23,6 @@
     background: rgba(255, 255, 255, 0.05);
   }
 
-  /* Активное состояние (велосипед в избранном) */
   &.active {
     color: #ff4444;
     border-color: rgba(255, 68, 68, 0.3);
@@ -35,5 +36,12 @@
       background: rgba(255, 68, 68, 0.2);
       border-color: rgba(255, 68, 68, 0.5);
     }
+  }
+}
+
+@media (max-width: 768px) {
+  .btn {
+    padding: 8px 12px;
+    font-size: 0.85rem;
   }
 }

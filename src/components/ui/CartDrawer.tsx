@@ -7,7 +7,6 @@ import styles from "./CartDrawer.module.scss";
 
 export function CartDrawer() {
   const { cart, isCartOpen, toggleCart, removeFromCart, clearCart, completeOrder } = useCart();
-
   const totalPrice = cart.reduce((sum, item) => sum + item.totalPrice, 0);
 
   return (
@@ -28,7 +27,6 @@ export function CartDrawer() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}>
-            {/* ШАПКА КОРЗИНЫ (осталась только кнопка закрытия) */}
             <div className={styles.header}>
               <h2>Корзина</h2>
               <button onClick={() => toggleCart(false)} className={styles.closeBtn}>
@@ -36,7 +34,6 @@ export function CartDrawer() {
               </button>
             </div>
 
-            {/* СПИСОК ТОВАРОВ */}
             <div className={styles.itemsList}>
               {cart.length === 0 ? (
                 <p className={styles.empty}>Ваша корзина пуста</p>
@@ -59,10 +56,7 @@ export function CartDrawer() {
                       <span className={styles.price}>
                         {item.totalPrice.toLocaleString("ru-RU")} ₽
                       </span>
-                      <button
-                        onClick={() => removeFromCart(item.id)}
-                        className={styles.removeBtn}
-                        title='Удалить'>
+                      <button onClick={() => removeFromCart(item.id)} className={styles.removeBtn}>
                         <TrashIcon />
                       </button>
                     </div>
@@ -71,10 +65,9 @@ export function CartDrawer() {
               )}
             </div>
 
-            {/* ПОДВАЛ КОРЗИНЫ */}
             {cart.length > 0 && (
               <div className={styles.footer}>
-                {/* КНОПКА ОЧИСТКИ */}
+                {/* Кнопка Очистить над суммой */}
                 <div className={styles.clearWrapper}>
                   <button onClick={clearCart} className={styles.clearBtn}>
                     Очистить корзину
@@ -86,7 +79,6 @@ export function CartDrawer() {
                   <span>{totalPrice.toLocaleString("ru-RU")} ₽</span>
                 </div>
 
-                {/* Кнопка оформления заказа */}
                 <button className={styles.checkoutBtn} onClick={completeOrder}>
                   Оформить заказ
                 </button>

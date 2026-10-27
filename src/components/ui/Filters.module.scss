@@ -48,13 +48,15 @@
 .categories {
   display: flex;
   gap: 10px;
-  overflow-x: auto; /* Скролл на мобильных, если не влезают */
+  overflow-x: auto; /* Разрешаем прокрутку */
   padding-bottom: 5px;
 
-  /* Скрываем скроллбар для красоты */
+  /* Скрываем скроллбар */
   &::-webkit-scrollbar {
     display: none;
   }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* Кнопка категории */
@@ -80,5 +82,23 @@
     background: $color-accent;
     border-color: $color-accent;
     color: #fff;
+  }
+}
+
+@media (max-width: 768px) {
+  .filtersContainer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .searchWrapper {
+    max-width: 100%;
+  }
+
+  .categories {
+    width: 100%;
+    padding-bottom: 10px; /* Для удобства скролла пальцем */
   }
 }

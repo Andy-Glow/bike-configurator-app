@@ -10,8 +10,6 @@ import styles from "./FavoritesDrawer.module.scss";
 
 export function FavoritesDrawer() {
   const { favorites, isFavoritesOpen, toggleFavoritesDrawer, toggleFavorite } = useFavorites();
-
-  // Получаем полные объекты велосипедов по их ID
   const favBikes = BIKES.filter((bike) => favorites.includes(bike.id));
 
   return (
@@ -48,7 +46,6 @@ export function FavoritesDrawer() {
                     key={bike.id}
                     href={`/bike/${bike.id}`}
                     className={styles.favItem}
-                    // При клике на карточку переходим и закрываем панель
                     onClick={() => toggleFavoritesDrawer(false)}>
                     <div className={styles.imageWrapper}>
                       <Image src={bike.imageUrl} alt={bike.name} fill className={styles.image} />
@@ -61,12 +58,11 @@ export function FavoritesDrawer() {
                       </span>
                     </div>
 
-                    {/* Кнопка удаления из избранного */}
                     <button
                       className={styles.removeBtn}
                       onClick={(e) => {
-                        e.preventDefault(); // Отменяем переход по ссылке
-                        e.stopPropagation(); // ОСТАНАВЛИВАЕМ всплытие, чтобы панель не закрывалась
+                        e.preventDefault();
+                        e.stopPropagation(); // Не закрываем панель при удалении
                         toggleFavorite(bike.id);
                       }}>
                       <TrashIcon />

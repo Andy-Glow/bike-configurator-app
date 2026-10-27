@@ -1,13 +1,17 @@
-"use client"; // Этот компонент будет работать только на клиенте
+"use client";
 
 import dynamic from "next/dynamic";
+import styles from "./ConfiguratorWrapper.module.scss";
 
-// Динамически импортируем нашу 3D-сцену без SSR
 const ConfiguratorCanvas = dynamic(() => import("./ConfiguratorCanvas"), {
   ssr: false,
-  loading: () => <div style={{ width: "100%", height: "100%", background: "#1a1a1a" }} />,
+  loading: () => <div className={styles.loading}>Загрузка 3D...</div>,
 });
 
 export function ConfiguratorWrapper() {
-  return <ConfiguratorCanvas />;
+  return (
+    <div className={styles.canvasContainer}>
+      <ConfiguratorCanvas />
+    </div>
+  );
 }

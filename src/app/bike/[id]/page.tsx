@@ -4,6 +4,8 @@ import { InitConfigurator } from "@/components/ui/InitConfigurator";
 import { ConfiguratorWrapper } from "@/components/scene/ConfiguratorWrapper";
 import { ConfiguratorPanel } from "@/components/ui/ConfiguratorPanel";
 import { FavoriteToggle } from "@/components/ui/FavoriteToggle";
+import { ZoomControls } from "@/components/ui/ZoomControls"; // <-- Импорт
+import styles from "./page.module.scss";
 
 export default async function BikePage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = await params;
@@ -12,38 +14,21 @@ export default async function BikePage({ params }: { params: Promise<{ id: strin
   if (!bike) return notFound();
 
   return (
-    <main style={{ height: "calc(100vh - 80px)", display: "flex", flexDirection: "column" }}>
+    <main className={styles.main}>
       <InitConfigurator bike={bike} />
 
-      <header
-        style={{
-          padding: "20px 40px",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "flex-start",
-        }}>
+      <header className={styles.header}>
         <div>
-          <h1 style={{ fontSize: "2rem", marginBottom: "10px" }}>{bike.name}</h1>
-          <p style={{ color: "#aaa" }}>{bike.description}</p>
+          <h1 className={styles.title}>{bike.name}</h1>
+          <p className={styles.description}>{bike.description}</p>
         </div>
-
-        {/* Кнопка "В избранное" */}
         <FavoriteToggle bikeId={bike.id} />
       </header>
 
-      <div
-        style={{
-          flex: 1,
-          position: "relative",
-          background: "#0f0f13",
-          borderRadius: "20px",
-          margin: "0 40px 40px",
-          overflow: "hidden",
-        }}>
+      <div className={styles.configuratorContainer}>
         <ConfiguratorWrapper />
-
-        {/* Наша панель поверх 3D-сцены */}
         <ConfiguratorPanel />
+        <ZoomControls />
       </div>
     </main>
   );
