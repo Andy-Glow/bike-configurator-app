@@ -4,9 +4,11 @@ import Link from "next/link";
 import styles from "./Header.module.scss";
 import { CartIcon, HeartIcon, UserIcon } from "../ui/Icons";
 import { useCart } from "@/store/useCart";
+import { useFavorites } from "@/store/useFavorites";
 
 export function Header() {
   const { cart, toggleCart } = useCart();
+  const { favorites, toggleFavoritesDrawer } = useFavorites();
 
   // Считаем общую стоимость всех товаров в корзине
   const totalCartPrice = cart.reduce((sum, item) => sum + item.totalPrice, 0);
@@ -22,11 +24,10 @@ export function Header() {
       </Link>
 
       <div className={styles.actions}>
-        {/* Кнопка открывает корзину по клику */}
+        {/* Кнопка Корзины */}
         <button className={styles.actionBtn} onClick={() => toggleCart(true)}>
           <div className={styles.cartIconWrapper}>
             <CartIcon />
-            {/* Показываем бейдж, только если в корзине есть товары */}
             {cart.length > 0 && <span className={styles.badge}>{cart.length}</span>}
           </div>
           <span className={styles.cartSum}>
@@ -34,9 +35,15 @@ export function Header() {
           </span>
         </button>
 
-        <button className={styles.actionBtn}>
-          <HeartIcon />
+        {/* Кнопка Избранного */}
+        <button className={styles.actionBtn} onClick={() => toggleFavoritesDrawer(true)}>
+          <div className={styles.cartIconWrapper}>
+            <HeartIcon />
+            {/* Если есть избранное, показываем красный бейдж */}
+            {favorites.length > 0 && <span className={styles.badge}>{favorites.length}</span>}
+          </div>
         </button>
+
         <button className={styles.actionBtn}>
           <UserIcon />
         </button>

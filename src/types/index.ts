@@ -31,3 +31,15 @@ export interface CartItem {
   accessories: string[]; // Массив ID аксессуаров
   totalPrice: number;
 }
+
+export interface Bike {
+  id: string;
+  name: string;
+  description: string;
+  basePrice: number;
+  imageUrl: string;
+  type: "city" | "mountain" | "road";
+  modelUrl: string; // путь к 3D-модели
+  colors: ColorOption[];
+  accessories: Accessory[];
+}

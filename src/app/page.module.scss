@@ -43,3 +43,11 @@
     grid-template-columns: 1fr; // В одну колонку
   }
 }
+
+.noResults {
+  grid-column: 1 / -1; /* Растягиваем на всю ширину сетки */
+  text-align: center;
+  color: #888;
+  font-size: 1.2rem;
+  margin-top: 40px;
+}

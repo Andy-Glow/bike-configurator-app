@@ -14,6 +14,7 @@ interface ConfiguratorState {
   initBike: (bike: Bike) => void;
   setColor: (colorHex: string) => void;
   toggleAccessory: (accessoryId: string) => void;
+  resetConfigurator: () => void; // <-- Новый метод для сброса
 }
 
 export const useConfigurator = create<ConfiguratorState>((set) => ({
@@ -21,7 +22,7 @@ export const useConfigurator = create<ConfiguratorState>((set) => ({
   selectedColor: "",
   selectedAccessories: [],
 
-  // Вызывается при открытии страницы, чтобы сбросить настройки на дефолтные
+  // Вызывается при открытии страницы велосипеда
   initBike: (bike) =>
     set({
       activeBike: bike,
@@ -39,4 +40,12 @@ export const useConfigurator = create<ConfiguratorState>((set) => ({
         ? state.selectedAccessories.filter((accId) => accId !== id)
         : [...state.selectedAccessories, id],
     })),
+
+  // Сбрасываем конфигурацию в ноль (после добавления в корзину)
+  resetConfigurator: () =>
+    set({
+      activeBike: null,
+      selectedColor: "",
+      selectedAccessories: [],
+    }),
 }));

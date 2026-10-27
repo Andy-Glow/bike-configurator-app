@@ -1,6 +1,7 @@
 @use "../../../styles/mixins" as *;
 @use "../../../styles/variables" as *;
 
+/* Основная карточка велосипеда */
 .card {
   display: flex;
   flex-direction: column;
@@ -11,34 +12,72 @@
     transform 0.3s ease,
     border-color 0.3s ease;
   cursor: pointer;
+  position: relative; /* Нужно для позиционирования сердечка */
 
   &:hover {
-    transform: translateY(-6px); // Карточка приподнимается
+    transform: translateY(-6px); /* Карточка всплывает */
     border-color: rgba(255, 255, 255, 0.3);
 
     .image {
-      transform: scale(1.05); // Картинка плавно приближается
+      transform: scale(1.05); /* Картинка немного увеличивается */
     }
   }
 }
 
+/* Кнопка избранного (сердечко поверх картинки) */
+.favoriteBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #aaa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    transform: scale(1.1);
+  }
+
+  /* Активное состояние (велосипед в избранном) */
+  &.isFavorite {
+    color: #ff4444;
+
+    svg {
+      fill: #ff4444; /* Заливаем сердечко красным */
+    }
+  }
+}
+
+/* Обертка для картинки */
 .imageWrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 3; // Пропорции картинки
+  aspect-ratio: 4 / 3;
   background: #1a1a1a;
   overflow: hidden;
 }
 
 .image {
-  object-fit: cover; // Картинка заполняет контейнер без искажений
+  object-fit: cover;
   transition: transform 0.5s ease;
 }
 
+/* Нижняя часть карточки (название и цена) */
 .content {
   padding: 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Название слева, цена справа */
   align-items: center;
 }
 
@@ -46,10 +85,12 @@
   font-size: 1.2rem;
   font-weight: 600;
   margin: 0;
+  color: #fff;
 }
 
 .price {
   font-size: 1.1rem;
   color: $color-accent;
   font-weight: 700;
+  margin: 0;
 }

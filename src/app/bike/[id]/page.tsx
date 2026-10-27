@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { InitConfigurator } from "@/components/ui/InitConfigurator";
 import { ConfiguratorWrapper } from "@/components/scene/ConfiguratorWrapper";
 import { ConfiguratorPanel } from "@/components/ui/ConfiguratorPanel";
+import { FavoriteToggle } from "@/components/ui/FavoriteToggle";
 
 export default async function BikePage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = await params;
@@ -14,12 +15,22 @@ export default async function BikePage({ params }: { params: Promise<{ id: strin
     <main style={{ height: "calc(100vh - 80px)", display: "flex", flexDirection: "column" }}>
       <InitConfigurator bike={bike} />
 
-      <header style={{ padding: "20px 40px" }}>
-        <h1 style={{ fontSize: "2rem", marginBottom: "10px" }}>{bike.name}</h1>
-        <p style={{ color: "#aaa" }}>{bike.description}</p>
+      <header
+        style={{
+          padding: "20px 40px",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "flex-start",
+        }}>
+        <div>
+          <h1 style={{ fontSize: "2rem", marginBottom: "10px" }}>{bike.name}</h1>
+          <p style={{ color: "#aaa" }}>{bike.description}</p>
+        </div>
+
+        {/* Кнопка "В избранное" */}
+        <FavoriteToggle bikeId={bike.id} />
       </header>
 
-      {/* Контейнер для 3D и панели */}
       <div
         style={{
           flex: 1,
