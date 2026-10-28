@@ -6,8 +6,7 @@ export const BIKES: Bike[] = [
     name: "Фикс-гир",
     description: "Облегчёный велосипед для максимальной скорости. Карбоновая рама и узкие колеса.",
     basePrice: 67000,
-    imageUrl:
-      "https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?q=80&w=800&auto=format&fit=crop",
+    imageUrl: "/fixed-bike.jpg",
     type: "road",
     modelUrl: "/models/fixed-bike.glb",
     colors: [
@@ -29,8 +28,7 @@ export const BIKES: Bike[] = [
     name: "Славный Горец",
     description: "Горный велосипед для бездорожья. Амортизационная вилка и 21 скорость.",
     basePrice: 98000,
-    imageUrl:
-      "https://images.unsplash.com/photo-1576435728678-68d0fbf94e91?q=80&w=800&auto=format&fit=crop",
+    imageUrl: "/mountain-bike.jpg",
     type: "mountain",
     modelUrl: "/models/mountain-bike.glb",
     colors: [
@@ -49,8 +47,7 @@ export const BIKES: Bike[] = [
     name: "Городничий",
     description: "Идеальный городской велосипед для ежедневных поездок. Легкая алюминиевая рама.",
     basePrice: 45000,
-    imageUrl:
-      "https://images.unsplash.com/photo-1485965120184-e220f721d03e?q=80&w=800&auto=format&fit=crop",
+    imageUrl: "/city-bike.jpg",
     type: "city",
     modelUrl: "/models/city-bike.glb",
     colors: [

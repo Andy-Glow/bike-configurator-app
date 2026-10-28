@@ -1,15 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  transpilePackages: ["three"],
+  output: "export",
+
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com", // Разрешаем картинки с Unsplash
-      },
-    ],
+    unoptimized: true,
   },
+
+  basePath: "/bike-configurator-app",
+  assetPrefix: "/bike-configurator-app/",
+
+  trailingSlash: true,
 };
 
 export default nextConfig;
