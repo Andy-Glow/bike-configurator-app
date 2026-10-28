@@ -8,6 +8,7 @@ import { CartItem } from "@/types";
 
 export function ConfiguratorPanel() {
   const router = useRouter();
+
   const {
     activeBike,
     selectedColor,
@@ -16,11 +17,11 @@ export function ConfiguratorPanel() {
     toggleAccessory,
     resetConfigurator,
   } = useConfigurator();
+
   const addToCart = useCart((state) => state.addToCart);
 
   if (!activeBike) return null;
 
-  // Считаем стоимость выбранных аксессуаров
   const accessoriesPrice = activeBike.accessories
     .filter((acc) => selectedAccessories.includes(acc.id))
     .reduce((sum, acc) => sum + acc.price, 0);
@@ -28,7 +29,7 @@ export function ConfiguratorPanel() {
   const totalPrice = activeBike.basePrice + accessoriesPrice;
 
   const handleAddToCart = () => {
-    // Формируем товар
+    // 1. Формируем объект товара
     const newItem: CartItem = {
       id: crypto.randomUUID(),
       bike: activeBike,
@@ -37,16 +38,16 @@ export function ConfiguratorPanel() {
       totalPrice,
     };
 
+    // 2. Добавляем в корзину и сбрасываем настройки
     addToCart(newItem);
-    resetConfigurator(); // Очищаем выбор после добавления
+    resetConfigurator();
 
-    // Плавный переход на главную (через View Transitions API)
-    const doc = document as any;
-    if (doc.startViewTransition) {
-      doc.startViewTransition(() => router.push("/"));
-    } else {
+    // 3. Плавный переход на главную с микро-задержкой
+    // Задержка в 100мс позволяет React безопасно размонтировать текущий компонент
+    // и открыть корзину, не вызывая ошибку "Page couldn't load" на мобильных.
+    setTimeout(() => {
       router.push("/");
-    }
+    }, 100);
   };
 
   return (
@@ -60,6 +61,7 @@ export function ConfiguratorPanel() {
               className={`${styles.colorBtn} ${selectedColor === color.hex ? styles.active : ""}`}
               style={{ backgroundColor: color.hex }}
               onClick={() => setColor(color.hex)}
+              title={color.name}
             />
           ))}
         </div>
