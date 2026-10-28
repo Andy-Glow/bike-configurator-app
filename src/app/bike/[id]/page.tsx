@@ -10,6 +10,13 @@ import { ScrollReset } from "@/components/ui/ScrollReset";
 import { ArrowLeftIcon } from "@/components/ui/Icons";
 import styles from "./page.module.scss";
 
+// Говорим Next.js, какие страницы нужно сгенерировать при сборке
+export async function generateStaticParams() {
+  return BIKES.map((bike) => ({
+    id: bike.id,
+  }));
+}
+
 export default async function BikePage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = await params;
   const bike = BIKES.find((b) => b.id === resolvedParams.id);
@@ -27,11 +34,8 @@ export default async function BikePage({ params }: { params: Promise<{ id: strin
           <p className={styles.description}>{bike.description}</p>
         </div>
 
-        {/* Обертка для кнопок справа */}
         <div className={styles.headerActions}>
           <FavoriteToggle bikeId={bike.id} />
-
-          {/* Новая кнопка "Назад" */}
           <Link href='/' className={styles.backBtn}>
             <ArrowLeftIcon />
             Назад
