@@ -6,7 +6,6 @@
   padding: 0;
 }
 
-/* Сброс шрифтов для форм, чтобы кнопки и инпуты наследовали основной шрифт */
 button,
 input,
 select,
@@ -22,19 +21,11 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-
-  /* Базовый цвет на случай, если картинка не загрузится */
   background-color: $color-bg;
-
-  /* Градиент (прозрачность 85%) + фоновая картинка */
-  background-image:
-    linear-gradient(rgba(28, 28, 34, 0.95), rgba(28, 28, 34, 0.9)), url("/background.jpg");
-
-  background-size: cover; /* Картинка заполняет весь экран */
-  background-position: center; /* Центрируем картинку */
-  background-repeat: no-repeat; /* Без повторений */
-  background-attachment: fixed; /* Фон зафиксирован при скролле */
-
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: $color-text;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }

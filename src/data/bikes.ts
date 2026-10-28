@@ -1,14 +1,17 @@
 import { Bike } from "@/types";
 
+// Префикс для правильной загрузки картинок и моделей на GitHub Pages
+const BASE = process.env.NODE_ENV === "production" ? "/bike-configurator-app" : "";
+
 export const BIKES: Bike[] = [
   {
     id: "road-01",
     name: "Фикс-гир",
     description: "Облегчёный велосипед для максимальной скорости. Карбоновая рама и узкие колеса.",
     basePrice: 67000,
-    imageUrl: "/fixed-bike.jpg",
+    imageUrl: `${BASE}/fixed-bike.jpg`,
     type: "road",
-    modelUrl: "/models/fixed-bike.glb",
+    modelUrl: `${BASE}/models/fixed-bike.glb`,
     colors: [
       { name: "Неоновый желтый", hex: "#eab308" },
       { name: "Сёрфер", hex: "#00dacf" },
@@ -22,15 +25,14 @@ export const BIKES: Bike[] = [
       { id: "bottle", name: "Фляга", price: 600, nodeName: "bottle" },
     ],
   },
-
   {
     id: "mountain-01",
     name: "Славный Горец",
     description: "Горный велосипед для бездорожья. Амортизационная вилка и 21 скорость.",
     basePrice: 98000,
-    imageUrl: "/mountain-bike.jpg",
+    imageUrl: `${BASE}/mountain-bike.jpg`,
     type: "mountain",
-    modelUrl: "/models/mountain-bike.glb",
+    modelUrl: `${BASE}/models/mountain-bike.glb`,
     colors: [
       { name: "Хаки", hex: "#4d5d53" },
       { name: "Оранжевый", hex: "#f97316" },
@@ -47,9 +49,9 @@ export const BIKES: Bike[] = [
     name: "Городничий",
     description: "Идеальный городской велосипед для ежедневных поездок. Легкая алюминиевая рама.",
     basePrice: 45000,
-    imageUrl: "/city-bike.jpg",
+    imageUrl: `${BASE}/city-bike.jpg`,
     type: "city",
-    modelUrl: "/models/city-bike.glb",
+    modelUrl: `${BASE}/models/city-bike.glb`,
     colors: [
       { name: "Классический синий", hex: "#02c5e7" },
       { name: "Бордовый", hex: "#b64444" },
