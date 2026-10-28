@@ -16,8 +16,8 @@
   right: 0;
   width: 100%;
   max-width: 400px;
-  height: 100vh;
-  background: $color-bg; /* Темный фон #1c1c22 */
+  height: 100dvh;
+  background: $color-bg;
   border-left: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 101;
   display: flex;
@@ -97,8 +97,8 @@
   display: flex;
   justify-content: space-between;
   padding: 16px;
-  @include glass-effect; /* Стекло */
-  border-radius: $radius-md; /* 12px */
+  @include glass-effect;
+  border-radius: $radius-md;
 
   h4 {
     margin: 0 0 8px 0;
@@ -183,14 +183,14 @@
   background: $color-accent;
   color: white;
   border: none;
-  border-radius: $radius-md; /* 12px */
+  border-radius: $radius-md;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
 
   &:hover {
-    background: color.adjust($color-accent, $lightness: 5%);
+    background: lighten($color-accent, 5%);
     box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
   }
 

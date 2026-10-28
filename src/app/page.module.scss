@@ -2,9 +2,9 @@
 
 .main {
   padding: 60px 40px;
-  max-width: 1400px; /* Ограничиваем максимальную ширину контента */
+  max-width: 1400px;
   margin: 0 auto;
-  min-height: 100vh;
+  flex: 1;
   width: 100%;
 }
 
@@ -32,14 +32,13 @@
 /* Сетка карточек */
 .grid {
   display: grid;
-  /* Создаем адаптивную сетку: карточки минимум 320px шириной */
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 30px;
   position: relative;
 }
 
 .noResults {
-  grid-column: 1 / -1; /* Растягиваем сообщение на всю ширину сетки */
+  grid-column: 1 / -1;
   text-align: center;
   color: #888;
   font-size: 1.2rem;
@@ -55,6 +54,6 @@
     font-size: 2rem;
   }
   .grid {
-    grid-template-columns: 1fr; /* На телефонах карточки в один столбец */
+    grid-template-columns: 1fr;
   }
 }
