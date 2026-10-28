@@ -16,7 +16,7 @@
   width: 100%;
   max-width: 400px;
   height: 100vh;
-  background: $color-bg;
+  background: $color-bg; /* Темный фон #1c1c22 */
   border-left: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 101;
   display: flex;
@@ -69,14 +69,13 @@
   margin-top: 40px;
 }
 
-/* Карточка велосипеда в избранном */
 .favItem {
   display: flex;
   align-items: center;
   gap: 16px;
   padding: 12px;
   @include glass-effect;
-  border-radius: $radius-md;
+  border-radius: $radius-md; /* 12px */
   transition: border-color 0.2s;
 
   &:hover {

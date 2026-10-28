@@ -9,13 +9,13 @@ import styles from "./BikeCard.module.scss";
 
 interface BikeCardProps {
   bike: Bike;
+  priority?: boolean; // Указывает, грузить ли картинку в первую очередь
 }
 
-export function BikeCard({ bike }: BikeCardProps) {
+export function BikeCard({ bike, priority = false }: BikeCardProps) {
   const { favorites, toggleFavorite } = useFavorites();
   const isFav = favorites.includes(bike.id);
 
-  // Останавливаем клик, чтобы не переходить на страницу велосипеда
   const handleFavoriteClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -24,7 +24,6 @@ export function BikeCard({ bike }: BikeCardProps) {
 
   return (
     <Link href={`/bike/${bike.id}`} className={styles.card}>
-      {/* Кнопка избранного поверх картинки */}
       <button
         className={`${styles.favoriteBtn} ${isFav ? styles.isFavorite : ""}`}
         onClick={handleFavoriteClick}>
@@ -32,7 +31,16 @@ export function BikeCard({ bike }: BikeCardProps) {
       </button>
 
       <div className={styles.imageWrapper}>
-        <Image src={bike.imageUrl} alt={bike.name} fill sizes='33vw' className={styles.image} />
+        <Image
+          src={bike.imageUrl}
+          alt={bike.name}
+          fill
+          // sizes подсказывает Next.js, какой размер картинки скачивать для разных экранов
+          sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
+          // priority=true отключает ленивую загрузку и грузит картинку сразу
+          priority={priority}
+          className={styles.image}
+        />
       </div>
 
       <div className={styles.content}>

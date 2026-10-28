@@ -1,17 +1,15 @@
 @use "../../styles/mixins" as *;
 @use "../../styles/variables" as *;
 
-/* Контейнер для всех фильтров */
 .filtersContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 20px;
   margin-bottom: 40px;
-  flex-wrap: wrap; /* Для мобильных, чтобы элементы переносились */
+  flex-wrap: wrap;
 }
 
-/* Обертка для строки поиска (эффект стекла) */
 .searchWrapper {
   position: relative;
   display: flex;
@@ -19,17 +17,15 @@
   width: 100%;
   max-width: 400px;
   @include glass-effect;
-  border-radius: $radius-md;
+  border-radius: $radius-md; /* 12px */
   padding: 0 16px;
 }
 
-/* Иконка лупы внутри поиска */
 .searchIcon {
   color: #888;
   margin-right: 12px;
 }
 
-/* Поле ввода */
 .searchInput {
   width: 100%;
   background: transparent;
@@ -44,14 +40,12 @@
   }
 }
 
-/* Контейнер для кнопок категорий */
 .categories {
   display: flex;
   gap: 10px;
-  overflow-x: auto; /* Разрешаем прокрутку */
+  overflow-x: auto;
   padding-bottom: 5px;
 
-  /* Скрываем скроллбар */
   &::-webkit-scrollbar {
     display: none;
   }
@@ -59,25 +53,27 @@
   scrollbar-width: none;
 }
 
-/* Кнопка категории */
 .categoryBtn {
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: #aaa;
   padding: 10px 20px;
-  border-radius: 30px; /* Овальные кнопки */
+  border-radius: 30px;
   font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
 
   &:hover {
     border-color: rgba(255, 255, 255, 0.3);
     color: #fff;
   }
 
-  /* Активная кнопка */
   &.active {
     background: $color-accent;
     border-color: $color-accent;
@@ -99,6 +95,6 @@
 
   .categories {
     width: 100%;
-    padding-bottom: 10px; /* Для удобства скролла пальцем */
+    padding-bottom: 10px;
   }
 }

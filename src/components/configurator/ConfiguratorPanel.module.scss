@@ -1,22 +1,20 @@
 @use "../../styles/mixins" as *;
 @use "../../styles/variables" as *;
 
-/* --- ОСНОВНАЯ ПАНЕЛЬ (ПК) --- */
 .panel {
   position: absolute;
   top: 40px;
   right: 40px;
   width: 320px;
   padding: 24px;
-  border-radius: $radius-lg;
-  @include glass-effect;
+  border-radius: $radius-lg; /* 20px */
+  @include glass-effect; /* Эффект прозрачного стекла */
   display: flex;
   flex-direction: column;
   gap: 24px;
   z-index: 10;
 }
 
-/* --- СЕКЦИИ (ЦВЕТА И АКСЕССУАРЫ) --- */
 .section {
   display: flex;
   flex-direction: column;
@@ -32,7 +30,6 @@
   letter-spacing: 1px;
 }
 
-/* Сетка цветов */
 .colorGrid {
   display: flex;
   gap: 12px;
@@ -51,14 +48,12 @@
   &:hover {
     transform: scale(1.1);
   }
-
   &.active {
     border-color: #fff;
     transform: scale(1.1);
   }
 }
 
-/* Список аксессуаров */
 .accessoryList {
   display: flex;
   flex-direction: column;
@@ -72,7 +67,6 @@
   cursor: pointer;
   color: #ccc;
   font-size: 0.95rem;
-
   &:hover {
     color: #fff;
   }
@@ -94,7 +88,6 @@
   font-weight: 600;
 }
 
-/* Итоговая цена */
 .totalBlock {
   display: flex;
   justify-content: space-between;
@@ -111,14 +104,13 @@
   color: $color-accent;
 }
 
-/* Кнопка добавления */
 .addToCartBtn {
   width: 100%;
   padding: 16px;
   background: linear-gradient(135deg, $color-accent 0%, #2563eb 100%);
   color: white;
   border: none;
-  border-radius: $radius-md;
+  border-radius: $radius-md; /* 12px */
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
@@ -129,7 +121,6 @@
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
   }
-
   &:active {
     transform: translateY(0) scale(0.98);
   }
@@ -144,12 +135,10 @@
     width: 100%;
     border-radius: 0;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(15, 15, 20, 0.95);
-    /* Убрали внутренний скролл, чтобы страница скроллилась целиком */
+    background: rgba(28, 28, 34, 0.95); /* Темный фон с прозрачностью */
   }
 
   .addToCartBtn {
-    /* Фиксируем кнопку в самом низу экрана */
     position: fixed;
     bottom: 0;
     left: 0;

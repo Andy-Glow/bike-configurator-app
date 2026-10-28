@@ -1,7 +1,6 @@
 @use "../../../styles/mixins" as *;
 @use "../../../styles/variables" as *;
 
-/* Основная карточка велосипеда */
 .card {
   display: flex;
   flex-direction: column;
@@ -12,19 +11,18 @@
     transform 0.3s ease,
     border-color 0.3s ease;
   cursor: pointer;
-  position: relative; /* Нужно для позиционирования сердечка */
+  position: relative;
 
   &:hover {
-    transform: translateY(-6px); /* Карточка всплывает */
+    transform: translateY(-6px);
     border-color: rgba(255, 255, 255, 0.3);
 
     .image {
-      transform: scale(1.05); /* Картинка немного увеличивается */
+      transform: scale(1.05);
     }
   }
 }
 
-/* Кнопка избранного (сердечко поверх картинки) */
 .favoriteBtn {
   position: absolute;
   top: 16px;
@@ -49,17 +47,14 @@
     transform: scale(1.1);
   }
 
-  /* Активное состояние (велосипед в избранном) */
   &.isFavorite {
     color: #ff4444;
-
     svg {
-      fill: #ff4444; /* Заливаем сердечко красным */
+      fill: #ff4444;
     }
   }
 }
 
-/* Обертка для картинки */
 .imageWrapper {
   position: relative;
   width: 100%;
@@ -69,16 +64,16 @@
 }
 
 .image {
-  object-fit: cover;
+  object-fit: cover; /* Картинка заполняет контейнер без искажений */
   transition: transform 0.5s ease;
 }
 
-/* Нижняя часть карточки (название и цена) */
 .content {
   padding: 20px;
   display: flex;
-  justify-content: space-between; /* Название слева, цена справа */
+  justify-content: space-between;
   align-items: center;
+  background: $color-bg;
 }
 
 .title {

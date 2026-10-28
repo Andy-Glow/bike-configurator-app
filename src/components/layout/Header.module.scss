@@ -8,7 +8,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 16px 40px;
-  background: #0f0f13;
+  background: $color-bg; /* Темный фон #1c1c22 */
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -18,20 +18,22 @@
   align-items: center;
   gap: 12px;
   transition: opacity 0.2s ease;
-  white-space: nowrap; /* Запрет переноса */
+  white-space: nowrap;
 
   &:hover {
     opacity: 0.8;
   }
 }
 
-.logoIcon {
-  font-size: 2rem;
+.logoImage {
+  object-fit: contain;
 }
 
 .logoText {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .logoTitle {
@@ -68,7 +70,7 @@
   transition:
     color 0.2s ease,
     transform 0.2s ease;
-  white-space: nowrap; /* Запрет переноса */
+  white-space: nowrap;
 
   &:hover {
     color: #fff;
@@ -85,7 +87,7 @@
   position: absolute;
   top: -8px;
   right: -8px;
-  background: $color-accent;
+  background: $color-accent; /* Синий бейдж */
   color: white;
   font-size: 0.7rem;
   font-weight: bold;
@@ -104,28 +106,29 @@
 /* --- АДАПТИВ ДЛЯ МОБИЛЬНЫХ --- */
 @media (max-width: 768px) {
   .header {
-    padding: 12px 15px; /* Уменьшили отступы по бокам */
+    padding: 12px 15px;
   }
-
   .logo {
     gap: 8px;
   }
   .logoTitle {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
   .logoSubtitle {
     display: none;
   }
-  .logoIcon {
-    font-size: 1.5rem;
+  .logoImage {
+    width: 32px;
+    height: 32px;
   }
-
   .actions {
-    gap: 12px; /* Уменьшили расстояние между иконками */
+    gap: 8px;
   }
-
   .actionBtn {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     gap: 4px;
+  }
+  .cartSum {
+    font-size: 0.85rem;
   }
 }

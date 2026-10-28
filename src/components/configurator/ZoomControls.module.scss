@@ -4,13 +4,11 @@
 .zoomWrapper {
   position: absolute;
   z-index: 10;
-  @include glass-effect;
+  @include glass-effect; /* Эффект стекла */
   padding: 8px;
-  border-radius: $radius-md;
+  border-radius: $radius-md; /* 12px */
   display: flex;
   gap: 10px;
-
-  /* Позиционирование для ПК: слева по центру */
   left: 40px;
   top: 50%;
   transform: translateY(-50%);
@@ -24,7 +22,6 @@
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: #fff;
-  font-size: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -39,12 +36,11 @@
 /* --- АДАПТИВ ДЛЯ МОБИЛЬНЫХ --- */
 @media (max-width: 768px) {
   .zoomWrapper {
-    /* Привязываем к границе между моделью (40vh) и панелью */
     top: calc(40vh - 30px);
     bottom: auto;
     left: 50%;
     transform: translateX(-50%);
     flex-direction: row;
-    background: rgba(15, 15, 20, 0.85);
+    background: rgba(28, 28, 34, 0.85); /* Темный фон для мобильных */
   }
 }

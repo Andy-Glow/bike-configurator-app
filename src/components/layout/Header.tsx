@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./Header.module.scss";
 import { CartIcon, HeartIcon, UserIcon } from "../ui/Icons";
 import { useCart } from "@/store/useCart";
 import { useFavorites } from "@/store/useFavorites";
-import { useAuth } from "@/store/useAuth"; // <-- Импорт стора авторизации
+import { useAuth } from "@/store/useAuth";
 
 export function Header() {
   const { cart, toggleCart } = useCart();
@@ -17,9 +18,15 @@ export function Header() {
   return (
     <header className={styles.header}>
       <Link href='/' className={styles.logo}>
-        <span className={styles.logoIcon}>🚲</span>
+        <Image
+          src='/velo-logo.png'
+          alt='Velo Studio'
+          width={60}
+          height={60}
+          className={styles.logoImage}
+        />
         <div className={styles.logoText}>
-          <span className={styles.logoTitle}>VELO STUDIO</span>
+          <span className={styles.logoTitle}>VELOSIPED STUDIO</span>
           <span className={styles.logoSubtitle}>Конфигуратор велосипедов</span>
         </div>
       </Link>

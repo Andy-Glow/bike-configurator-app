@@ -1,8 +1,10 @@
+@use "../styles/variables" as *;
+
 .main {
-  flex: 1; /* Занимает всё оставшееся пространство */
   padding: 60px 40px;
-  max-width: 1400px;
+  max-width: 1400px; /* Ограничиваем максимальную ширину контента */
   margin: 0 auto;
+  min-height: 100vh;
   width: 100%;
 }
 
@@ -18,6 +20,8 @@
   background: linear-gradient(to right, #fff, #aaa);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 
 .subtitle {
@@ -25,13 +29,24 @@
   font-size: 1.2rem;
 }
 
+/* Сетка карточек */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); // Адаптивная сетка
+  /* Создаем адаптивную сетку: карточки минимум 320px шириной */
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 30px;
+  position: relative;
 }
 
-// Адаптив для мобильных
+.noResults {
+  grid-column: 1 / -1; /* Растягиваем сообщение на всю ширину сетки */
+  text-align: center;
+  color: #888;
+  font-size: 1.2rem;
+  margin-top: 40px;
+}
+
+/* --- АДАПТИВ ДЛЯ МОБИЛЬНЫХ --- */
 @media (max-width: 768px) {
   .main {
     padding: 30px 20px;
@@ -40,14 +55,6 @@
     font-size: 2rem;
   }
   .grid {
-    grid-template-columns: 1fr; // В одну колонку
+    grid-template-columns: 1fr; /* На телефонах карточки в один столбец */
   }
-}
-
-.noResults {
-  grid-column: 1 / -1; /* Растягиваем на всю ширину сетки */
-  text-align: center;
-  color: #888;
-  font-size: 1.2rem;
-  margin-top: 40px;
 }

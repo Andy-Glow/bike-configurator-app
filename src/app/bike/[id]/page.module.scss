@@ -1,7 +1,10 @@
+@use "../../../styles/variables" as *;
+
 .main {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  flex: 1; /* Занимает всё свободное место на экране */
+  width: 100%;
 }
 
 .header {
@@ -9,50 +12,103 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  gap: 20px;
+}
+
+.headerInfo {
+  flex: 1;
+  min-width: 0; /* Позволяет длинному названию переноситься на новую строку */
 }
 
 .title {
   font-size: 2rem;
   margin-bottom: 10px;
+  word-break: break-word;
+  line-height: 1.2;
 }
 
 .description {
   color: #aaa;
 }
 
+.headerActions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-end;
+  flex-shrink: 0; /* Кнопки не сжимаются */
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 30px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #aaa;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  font-family: inherit;
+  text-decoration: none;
+  line-height: 1;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #fff;
+    background: rgba(255, 255, 255, 0.05);
+  }
+}
+
+/* Контейнер для 3D-сцены */
 .configuratorContainer {
   flex: 1;
   position: relative;
-  background: #0f0f13;
-  border-radius: 20px;
+  background: $color-bg; /* Использует переменную #1c1c22 */
+  border-radius: $radius-lg; /* 20px */
   margin: 0 40px 40px;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 /* --- АДАПТИВ ДЛЯ МОБИЛЬНЫХ --- */
 @media (max-width: 768px) {
   .main {
-    /* Добавляем отступ снизу, чтобы фиксированная кнопка корзины не перекрывала контент */
-    padding-bottom: 90px;
+    padding-bottom: 90px; /* Место под фиксированную кнопку добавления в корзину */
   }
 
   .header {
     padding: 15px 20px;
+    gap: 15px;
   }
 
   .title {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     margin-bottom: 5px;
   }
 
   .description {
-    font-size: 0.9rem; /* Описание снова отображается */
+    font-size: 0.9rem;
+  }
+
+  .headerActions {
+    gap: 8px;
+  }
+
+  .backBtn {
+    padding: 8px 12px;
+    font-size: 0.85rem;
   }
 
   .configuratorContainer {
     margin: 0;
     border-radius: 0;
-    background: transparent;
+    background: $color-bg;
   }
 }

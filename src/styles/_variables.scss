@@ -1,5 +1,18 @@
-$color-bg: #0f0f13;
+// Цвета
+$color-accent: #3b82f6; // Основной синий цвет кнопок и акцентов
+$color-primary: #3b82f6; // Дублируем для совместимости
 $color-text: #ffffff;
-$color-accent: #3b82f6;
+$color-text-muted: #aaaaaa;
+
+// ЦВЕТ ФОНА САЙТА
+$color-bg: #1c1c22;
+
+// Скругления углов
 $radius-md: 12px;
 $radius-lg: 20px;
+
+// Эффект стекла
+$glass-bg: rgba(255, 255, 255, 0.03);
+$glass-border: rgba(255, 255, 255, 0.1);
+$glass-border-hover: rgba(255, 255, 255, 0.3);
+$glass-bg-hover: rgba(255, 255, 255, 0.05);

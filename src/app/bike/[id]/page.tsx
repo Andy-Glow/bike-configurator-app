@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { BIKES } from "@/data/bikes";
 import { notFound } from "next/navigation";
 import { InitConfigurator } from "@/components/configurator/InitConfigurator";
@@ -6,6 +7,7 @@ import { ConfiguratorPanel } from "@/components/configurator/ConfiguratorPanel";
 import { FavoriteToggle } from "@/components/favorites/FavoriteToggle";
 import { ZoomControls } from "@/components/configurator/ZoomControls";
 import { ScrollReset } from "@/components/ui/ScrollReset";
+import { ArrowLeftIcon } from "@/components/ui/Icons";
 import styles from "./page.module.scss";
 
 export default async function BikePage({ params }: { params: Promise<{ id: string }> }) {
@@ -18,13 +20,25 @@ export default async function BikePage({ params }: { params: Promise<{ id: strin
     <main className={styles.main}>
       <ScrollReset />
       <InitConfigurator bike={bike} />
+
       <header className={styles.header}>
-        <div>
+        <div className={styles.headerInfo}>
           <h1 className={styles.title}>{bike.name}</h1>
           <p className={styles.description}>{bike.description}</p>
         </div>
-        <FavoriteToggle bikeId={bike.id} />
+
+        {/* Обертка для кнопок справа */}
+        <div className={styles.headerActions}>
+          <FavoriteToggle bikeId={bike.id} />
+
+          {/* Новая кнопка "Назад" */}
+          <Link href='/' className={styles.backBtn}>
+            <ArrowLeftIcon />
+            Назад
+          </Link>
+        </div>
       </header>
+
       <div className={styles.configuratorContainer}>
         <ConfiguratorWrapper />
         <ConfiguratorPanel />
