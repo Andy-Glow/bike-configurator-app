@@ -1,7 +1,7 @@
 @use "../../styles/mixins" as *;
 @use "../../styles/variables" as *;
 
-/* Основная стеклянная панель конфигуратора */
+/* --- ОСНОВНАЯ ПАНЕЛЬ (ПК) --- */
 .panel {
   position: absolute;
   top: 40px;
@@ -16,14 +16,13 @@
   z-index: 10;
 }
 
-/* Секция внутри панели (Цвета, Аксессуары) */
+/* --- СЕКЦИИ (ЦВЕТА И АКСЕССУАРЫ) --- */
 .section {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-/* Заголовок секции ("Цвет рамы", "Аксессуары") */
 .title {
   font-size: 1rem;
   font-weight: 600;
@@ -33,13 +32,12 @@
   letter-spacing: 1px;
 }
 
-/* Сетка для кнопок выбора цвета */
+/* Сетка цветов */
 .colorGrid {
   display: flex;
   gap: 12px;
 }
 
-/* Кнопка выбора конкретного цвета (кружок) */
 .colorBtn {
   width: 40px;
   height: 40px;
@@ -54,7 +52,6 @@
     transform: scale(1.1);
   }
 
-  /* Активный цвет обводим белой рамкой */
   &.active {
     border-color: #fff;
     transform: scale(1.1);
@@ -68,7 +65,6 @@
   gap: 10px;
 }
 
-/* Обертка для чекбокса и текста (для клика по всей строке) */
 .checkboxLabel {
   display: flex;
   align-items: center;
@@ -82,26 +78,23 @@
   }
 }
 
-/* Сам чекбокс */
 .checkbox {
   width: 18px;
   height: 18px;
-  accent-color: $color-accent; /* Цвет галочки в стиле бренда */
+  accent-color: $color-accent;
   cursor: pointer;
 }
 
-/* Название аксессуара */
 .accName {
   flex: 1;
 }
 
-/* Цена аксессуара */
 .accPrice {
   color: $color-accent;
   font-weight: 600;
 }
 
-/* Блок с итоговой ценой */
+/* Итоговая цена */
 .totalBlock {
   display: flex;
   justify-content: space-between;
@@ -112,18 +105,17 @@
   color: #fff;
 }
 
-/* Итоговая сумма */
 .totalPrice {
   font-size: 1.4rem;
   font-weight: 800;
   color: $color-accent;
 }
 
-/* Кнопка "Добавить в корзину" */
+/* Кнопка добавления */
 .addToCartBtn {
   width: 100%;
   padding: 16px;
-  background: linear-gradient(135deg, $color-accent 0%, #2563eb 100%); /* Градиент для "сочности" */
+  background: linear-gradient(135deg, $color-accent 0%, #2563eb 100%);
   color: white;
   border: none;
   border-radius: $radius-md;
@@ -133,13 +125,11 @@
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
 
-  /* При наведении кнопка всплывает и свечение усиливается */
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
   }
 
-  /* При нажатии кнопка "вдавливается" */
   &:active {
     transform: translateY(0) scale(0.98);
   }
@@ -148,15 +138,25 @@
 /* --- АДАПТИВ ДЛЯ МОБИЛЬНЫХ --- */
 @media (max-width: 768px) {
   .panel {
-    position: static; /* Убираем абсолютное позиционирование */
+    position: relative;
+    top: auto;
+    right: auto;
     width: 100%;
     border-radius: 0;
-    padding: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(15, 15, 20, 0.95); /* Более плотный фон для читаемости */
+    background: rgba(15, 15, 20, 0.95);
+    /* Убрали внутренний скролл, чтобы страница скроллилась целиком */
+  }
 
-    /* Ограничиваем высоту панели, чтобы она не занимала весь экран */
-    max-height: 50vh;
-    overflow-y: auto;
+  .addToCartBtn {
+    /* Фиксируем кнопку в самом низу экрана */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    border-radius: 0;
+    padding: 20px;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.6);
   }
 }

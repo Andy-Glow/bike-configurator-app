@@ -39,12 +39,12 @@
 /* --- АДАПТИВ ДЛЯ МОБИЛЬНЫХ --- */
 @media (max-width: 768px) {
   .zoomWrapper {
-    /* На мобильных: между 3D-сценой (45vh) и панелью */
-    top: calc(45vh - 60px);
+    /* Привязываем к границе между моделью (40vh) и панелью */
+    top: calc(40vh - 30px);
     bottom: auto;
     left: 50%;
     transform: translateX(-50%);
     flex-direction: row;
-    background: rgba(15, 15, 20, 0.8); /* Чуть плотнее фон */
+    background: rgba(15, 15, 20, 0.85);
   }
 }

@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import "@/styles/globals.scss";
 import { Header } from "@/components/layout/Header";
-import { CartDrawer } from "@/components/ui/CartDrawer";
-import { OrderSuccessModal } from "@/components/ui/OrderSuccessModal";
-import { FavoritesDrawer } from "@/components/ui/FavoritesDrawer";
+import { CartDrawer } from "@/components/cart/CartDrawer";
+import { OrderSuccessModal } from "@/components/cart/OrderSuccessModal";
+import { FavoritesDrawer } from "@/components/favorites/FavoritesDrawer";
+import { AuthModal } from "@/components/auth/AuthModal";
 
 export const metadata: Metadata = {
   title: "Velo Studio",
@@ -22,6 +23,7 @@ export default function RootLayout({
         <CartDrawer />
         <OrderSuccessModal />
         <FavoritesDrawer />
+        <AuthModal />
         {children}
       </body>
     </html>

@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useFavorites } from "@/store/useFavorites";
 import { BIKES } from "@/data/bikes";
-import { TrashIcon } from "./Icons";
+import { TrashIcon } from "../ui/Icons";
 import styles from "./FavoritesDrawer.module.scss";
 
 export function FavoritesDrawer() {

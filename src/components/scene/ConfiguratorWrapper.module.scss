@@ -3,26 +3,41 @@
   height: 100%;
 }
 
+/* На ПК оставляем место для панели справа */
+@media (min-width: 769px) {
+  .canvasContainer {
+    width: calc(100% - 360px);
+    height: 70vh;
+  }
+}
+
+/* На мобильных фиксируем высоту 3D-сцены */
+@media (max-width: 768px) {
+  .canvasContainer {
+    height: 400px;
+    width: 100%;
+  }
+}
+
+/* Стили для текста "Загрузка 3D-модели..." */
 .loading {
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: center; /* Центрируем по вертикали */
+  justify-content: center; /* Центрируем по горизонтали */
   color: #888;
+  font-size: 1.2rem;
+  font-weight: 500;
+  animation: pulse 1.5s infinite; /* Легкое мигание, чтобы показать, что идет процесс */
 }
 
-/* --- АДАПТИВ ДЛЯ ПК --- */
-@media (min-width: 769px) {
-  .canvasContainer {
-    width: calc(100% - 360px);
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
   }
-}
-
-/* --- АДАПТИВ ДЛЯ МОБИЛЬНЫХ --- */
-@media (max-width: 768px) {
-  .canvasContainer {
-    height: 45vh; /* 3D-сцена занимает 45% высоты экрана */
-    flex-shrink: 0;
+  50% {
+    opacity: 0.5;
   }
 }

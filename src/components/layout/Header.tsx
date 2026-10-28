@@ -5,12 +5,13 @@ import styles from "./Header.module.scss";
 import { CartIcon, HeartIcon, UserIcon } from "../ui/Icons";
 import { useCart } from "@/store/useCart";
 import { useFavorites } from "@/store/useFavorites";
+import { useAuth } from "@/store/useAuth"; // <-- Импорт стора авторизации
 
 export function Header() {
   const { cart, toggleCart } = useCart();
   const { favorites, toggleFavoritesDrawer } = useFavorites();
+  const { toggleAuth } = useAuth(); // <-- Достаем метод открытия окна
 
-  // Считаем общую стоимость всех товаров в корзине
   const totalCartPrice = cart.reduce((sum, item) => sum + item.totalPrice, 0);
 
   return (
@@ -24,7 +25,6 @@ export function Header() {
       </Link>
 
       <div className={styles.actions}>
-        {/* Кнопка Корзины */}
         <button className={styles.actionBtn} onClick={() => toggleCart(true)}>
           <div className={styles.cartIconWrapper}>
             <CartIcon />
@@ -35,16 +35,15 @@ export function Header() {
           </span>
         </button>
 
-        {/* Кнопка Избранного */}
         <button className={styles.actionBtn} onClick={() => toggleFavoritesDrawer(true)}>
           <div className={styles.cartIconWrapper}>
             <HeartIcon />
-            {/* Если есть избранное, показываем красный бейдж */}
             {favorites.length > 0 && <span className={styles.badge}>{favorites.length}</span>}
           </div>
         </button>
 
-        <button className={styles.actionBtn}>
+        {/* Кнопка личного кабинета */}
+        <button className={styles.actionBtn} onClick={() => toggleAuth(true)}>
           <UserIcon />
         </button>
       </div>

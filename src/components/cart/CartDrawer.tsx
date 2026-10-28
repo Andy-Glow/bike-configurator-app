@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import { useCart } from "@/store/useCart";
-import { TrashIcon } from "./Icons";
+import { TrashIcon } from "../ui/Icons";
 import styles from "./CartDrawer.module.scss";
 
 export function CartDrawer() {

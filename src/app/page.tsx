@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { BIKES } from "@/data/bikes";
-import { BikeCard } from "@/components/ui/BikeCard/BikeCard";
-import { Filters, FilterType } from "@/components/ui/Filters";
+import { BikeCard } from "@/components/catalog/BikeCard/BikeCard";
+import { Filters, FilterType } from "@/components/catalog/Filters";
 import styles from "./page.module.scss";
 
 export default function Home() {

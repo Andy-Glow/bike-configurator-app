@@ -46,7 +46,7 @@ export const BIKES: Bike[] = [
   },
   {
     id: "urban-01",
-    name: "Urban Cruiser",
+    name: "Городничий",
     description: "Идеальный городской велосипед для ежедневных поездок. Легкая алюминиевая рама.",
     basePrice: 45000,
     imageUrl:

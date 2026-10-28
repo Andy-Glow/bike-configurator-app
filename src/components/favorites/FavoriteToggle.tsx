@@ -1,7 +1,7 @@
 "use client";
 
 import { useFavorites } from "@/store/useFavorites";
-import { HeartIcon } from "./Icons";
+import { HeartIcon } from "../ui/Icons";
 import styles from "./FavoriteToggle.module.scss";
 
 interface FavoriteToggleProps {

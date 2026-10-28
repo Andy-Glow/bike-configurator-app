@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Bike } from "@/types";
 import { useFavorites } from "@/store/useFavorites";
-import { HeartIcon } from "../Icons";
+import { HeartIcon } from "../../ui/Icons";
 import styles from "./BikeCard.module.scss";
 
 interface BikeCardProps {
