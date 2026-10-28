@@ -12,7 +12,7 @@ interface ConfiguratorState {
   initBike: (bike: Bike) => void;
   setColor: (colorHex: string) => void;
   toggleAccessory: (accessoryId: string) => void;
-  resetConfigurator: () => void; // Метод для сброса
+  resetConfigurator: () => void;
 }
 
 export const useConfigurator = create<ConfiguratorState>((set) => ({
@@ -20,7 +20,6 @@ export const useConfigurator = create<ConfiguratorState>((set) => ({
   selectedColor: "",
   selectedAccessories: [],
 
-  // Инициализация при переходе на страницу
   initBike: (bike) =>
     set({
       activeBike: bike,
@@ -30,7 +29,6 @@ export const useConfigurator = create<ConfiguratorState>((set) => ({
 
   setColor: (hex) => set({ selectedColor: hex }),
 
-  // Включение/выключение аксессуара
   toggleAccessory: (id) =>
     set((state) => ({
       selectedAccessories: state.selectedAccessories.includes(id)
@@ -38,10 +36,9 @@ export const useConfigurator = create<ConfiguratorState>((set) => ({
         : [...state.selectedAccessories, id],
     })),
 
-  // Сброс после добавления в корзину
+  // ИСПРАВЛЕНИЕ: Убрали activeBike: null, чтобы не ломать рендер страницы при переходе
   resetConfigurator: () =>
     set({
-      activeBike: null,
       selectedColor: "",
       selectedAccessories: [],
     }),
