@@ -36,7 +36,7 @@ export default function ConfiguratorCanvas() {
       />
 
       {/* Красивое окружение для бликов */}
-      <Environment preset='city' />
+      <Environment files='/bike-configurator-app/hdri/potsdamer_platz_1k.hdr' />
     </Canvas>
   );
 }
